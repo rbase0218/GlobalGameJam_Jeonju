@@ -95,7 +95,7 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
     {
         if (HasKey(key))
         {
-            DebugWrap.Log($"[ObjectPoolManager] {key}가 중복됩니다.");
+            Debug.Log($"[ObjectPoolManager] {key}가 중복됩니다.");
             return;
         }
         
