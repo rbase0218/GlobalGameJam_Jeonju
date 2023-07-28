@@ -16,6 +16,8 @@ public class StatusManager : MonoBehaviour
 	}
 
 	#endregion
+
+
 	public void CopyOrigin()
 	{
 		if (copyStatus is not null && status is not null)
