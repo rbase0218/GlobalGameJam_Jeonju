@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     public GameObject bulletPrefabC; // 생성할 프리팹 오브젝트
     public GameObject bulletPrefabD; // 생성할 프리팹 오브젝트
 
+    public float DelayTime;
+
+    public bool chkDelay;
     public GameObject CameraObject = GameObject.FindGameObjectWithTag("Camera");
     private Rigidbody rb;
     private Vector3 movement;
@@ -46,7 +49,20 @@ public class PlayerController : MonoBehaviour
         // 마우스 왼쪽 버튼 클릭 시 프리팹 오브젝트 생성
         if (Input.GetMouseButtonDown(0))
         {
-            SpawnBullet();
+            if (chkDelay == false)
+            {
+                SpawnBullet();
+                chkDelay = true;
+                AudioManager.Inst.PlaySFX("Seeds-dropped");
+                Invoke("DelayMouse", DelayTime);
+            }
+            else
+            {
+                Debug.Log("Activate Delay");
+            }
+
+
+            
         }
     }
 
@@ -55,7 +71,9 @@ public class PlayerController : MonoBehaviour
         // 이동 실행
         MovePlayer();
     }
-
+    private void DelayMouse() {
+        chkDelay = false;
+    }
     private void MovePlayer()
     {
         // 이동 방향을 기준으로 이동 속도만큼 이동
@@ -65,25 +83,29 @@ public class PlayerController : MonoBehaviour
 
     private void SpawnBullet()
     {
-        // 플레이어의 현재 위치에서 프리팹 오브젝트 생성
-        if(dropOption == "A") {
-            Instantiate(bulletPrefabA, transform.position, Quaternion.identity);
-        }
-        else if(dropOption == "B") {
-            Instantiate(bulletPrefabB, transform.position, Quaternion.identity);
-        }
-        else if (dropOption == "C")
-        {
-            Instantiate(bulletPrefabC, transform.position, Quaternion.identity);
-        }
-        else if (dropOption == "D")
-        {
-            Instantiate(bulletPrefabD, transform.position, Quaternion.identity);
-        }
-        else {
-            Debug.Log("No options were selected");
-        }
-
+        
+            // 플레이어의 현재 위치에서 프리팹 오브젝트 생성
+            if (dropOption == "A")
+            {
+                Instantiate(bulletPrefabA, transform.position, Quaternion.identity);
+            }
+            else if (dropOption == "B")
+            {
+                Instantiate(bulletPrefabB, transform.position, Quaternion.identity);
+            }
+            else if (dropOption == "C")
+            {
+                Instantiate(bulletPrefabC, transform.position, Quaternion.identity);
+            }
+            else if (dropOption == "D")
+            {
+                Instantiate(bulletPrefabD, transform.position, Quaternion.identity);
+            }
+            else
+            {
+                Debug.Log("No options were selected");
+            }
+        
     }
 }    
 
