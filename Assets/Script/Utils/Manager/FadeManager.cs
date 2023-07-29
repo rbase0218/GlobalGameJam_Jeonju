@@ -21,6 +21,8 @@ public class FadeManager : Singleton<FadeManager>
     private void Awake()
     {
         FadeImage.rectTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
+
+        FadeIn(3f);
     }
 
     public void FadeIn(float time = 0f, UnityAction inAction = null)

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e70cbab727a3c4e4796efa325c1fbedf
+guid: 47ef6a99f8d477d4ebcda1b3b30c574d
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -29,7 +29,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 0
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -100,14 +100,14 @@ ModelImporter:
       takeName: Idle
       internalID: -3100369314251171874
       firstFrame: 3
-      lastFrame: 75
+      lastFrame: 77
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
