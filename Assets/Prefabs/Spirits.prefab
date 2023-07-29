@@ -159,6 +159,8 @@ MonoBehaviour:
   bulletPrefabB: {fileID: 0}
   bulletPrefabC: {fileID: 0}
   bulletPrefabD: {fileID: 0}
+  DelayTime: 0
+  chkDelay: 0
   CameraObject: {fileID: 0}
   dropOption: 
 --- !u!1 &5571844103134088651
@@ -223,7 +225,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 0}
         m_Name: Target_angles
         m_Overridden: 1
-      - m_Value: {x: -14.155127, y: 30.548527, z: 1.6355896}
+      - m_Value: {x: -6.6523995, y: 82.44853, z: -17.65041}
         m_Name: Target_position
         m_Overridden: 1
       - m_Value: {x: 0.63207906, y: 0.63207906, z: 0.63207906}
