@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     public float DelayTime;
 
     public bool chkDelay;
-    public GameObject CameraObject = GameObject.FindGameObjectWithTag("Camera");
     private Rigidbody rb;
     private Vector3 movement;
 
@@ -33,16 +32,6 @@ public class PlayerController : MonoBehaviour
 
         float wheelInput = Input.GetAxis("Mouse ScrollWheel");
         Vector3 cameraPos;
-        cameraPos = CameraObject.transform.position;
-        if (wheelInput > 0) {
-            CameraObject.transform.position = new Vector3(cameraPos.x, cameraPos.y, cameraPos.z-0.5f);
-        }
-        else if (wheelInput < 0)
-        {
-            CameraObject.transform.position = new Vector3(cameraPos.x, cameraPos.y, cameraPos.z + 0.5f);
-        }
-
-
 
         movement = new Vector3(horizontalInput, 0f, verticalInput).normalized;
 

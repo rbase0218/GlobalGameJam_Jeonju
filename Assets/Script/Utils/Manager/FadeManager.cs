@@ -20,9 +20,8 @@ public class FadeManager : Singleton<FadeManager>
 
     private void Awake()
     {
-        FadeImage.rectTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
-
-        FadeIn(3f);
+        // FadeImage.rectTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
+        FadeImage.raycastTarget = false;
     }
 
     public void FadeIn(float time = 0f, UnityAction inAction = null)
@@ -52,6 +51,7 @@ public class FadeManager : Singleton<FadeManager>
     private IEnumerator UpdateScreenFade(float start, float end, float time, UnityAction updateAction = null)
     {
         var imageColor = FadeImage.color;
+        FadeImage.raycastTarget = true;
         
         while (timer < time)
         {
@@ -69,6 +69,7 @@ public class FadeManager : Singleton<FadeManager>
         
         // Used Action
         updateAction?.Invoke();
+        FadeImage.raycastTarget = false;
     }
 
     private void SetFadeRun(bool isTrigger)
