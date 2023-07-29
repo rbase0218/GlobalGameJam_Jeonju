@@ -5,31 +5,31 @@ using UnityEngine;
 public static class DebugWrap
 {
 
-    private readonly static string ErrorMsg = "°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
+    private readonly static string ErrorMsg = "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½.";
 
-#if UNITY_EDITOR_WIN
+#if UNITY_EDITOR_WIN || UNITY_EDITOR_OSX
     public static string GetErrorMsg()
     {
         return ErrorMsg;
     }
 #endif
 
-#if UNITY_EDITOR_WIN
+#if UNITY_EDITOR_WIN || UNITY_EDITOR_OSX
     public static void Log(object message) => Debug.Log(message);
 #endif
 
 
-#if UNITY_EDITOR_WIN
+#if UNITY_EDITOR_WIN || UNITY_EDITOR_OSX
     public static void LogError(object message) => Debug.LogError(message);
 #endif
 
-#if UNITY_EDITOR_WIN
+#if UNITY_EDITOR_WIN || UNITY_EDITOR_OSX
     public static void Assert(bool condition, object message) => Debug.Assert(condition, message);
     public static void Assert(bool condition) => Debug.Assert(condition);
 
 #endif
 
-#if UNITY_EDITOR_WIN
+#if UNITY_EDITOR_WIN || UNITY_EDITOR_OSX
     public static void Break() => Debug.Break();
 #endif
 }
