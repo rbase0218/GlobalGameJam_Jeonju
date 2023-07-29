@@ -64,6 +64,8 @@ public class PlayerController : MonoBehaviour
 
             
         }
+
+        dropOption = InvenManager.Instance.currItemName.itemName;
     }
 
     private void FixedUpdate()
@@ -85,22 +87,29 @@ public class PlayerController : MonoBehaviour
     {
         
             // 플레이어의 현재 위치에서 프리팹 오브젝트 생성
-            if (dropOption == "A")
+            if (dropOption == "Grass" && GameManager.Instance.seeds > 1)
             {
                 Instantiate(bulletPrefabA, transform.position, Quaternion.identity);
+                GameManager.Instance.setSeeds(1f);
             }
-            else if (dropOption == "B")
+            else if (dropOption == "Tree" && GameManager.Instance.seeds >= 1 && GameManager.Instance.sprits >= 1)
             {
                 Instantiate(bulletPrefabB, transform.position, Quaternion.identity);
+                GameManager.Instance.setSeeds(1f);
+                GameManager.Instance.SetSprits(1f);
             }
-            else if (dropOption == "C")
+            else if (dropOption == "Web" && GameManager.Instance.seeds >= 2 && GameManager.Instance.sprits >= 2)
             {
                 Instantiate(bulletPrefabC, transform.position, Quaternion.identity);
-            }
-            else if (dropOption == "D")
+                GameManager.Instance.setSeeds(2f);
+                GameManager.Instance.SetSprits(2f);
+        }
+            else if (dropOption == "Flower" && GameManager.Instance.seeds >= 2 && GameManager.Instance.sprits >= 2)
             {
                 Instantiate(bulletPrefabD, transform.position, Quaternion.identity);
-            }
+                GameManager.Instance.setSeeds(1f);
+                GameManager.Instance.SetSprits(8f);
+        }
             else
             {
                 Debug.Log("No options were selected");
