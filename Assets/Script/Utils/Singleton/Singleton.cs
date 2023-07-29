@@ -36,7 +36,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                         _instance = findObject.AddComponent<T>();
                     }
                 }
-                    
+
                 DontDestroyOnLoad(_instance);
 
                 return _instance;

@@ -9,6 +9,10 @@ public class GameManager : Singleton<GameManager>
     public float sprits;
 
     public GameObject pauseCanvas;
+
+    public ScoreManager scoreManager;
+    public InvenManager invenManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,9 +28,8 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
-        
-        ScoreManager.Instance.SetSeedText(seeds.ToString());
-        ScoreManager.Instance.SetSpiritText(sprits.ToString());
+        scoreManager.SetSeedText(seeds.ToString());
+        scoreManager.SetSpiritText(sprits.ToString());
 
 
         if (Input.GetKeyDown(KeyCode.Escape))

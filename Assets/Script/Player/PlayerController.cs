@@ -23,13 +23,14 @@ public class PlayerController : MonoBehaviour
     private float targetRotationY = 0f;
     private Quaternion targetRotation;
 
+    public InvenManager invenManager;
+
 
     public string dropOption;
    
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        
     }
 
     private void Update()
@@ -75,7 +76,7 @@ public class PlayerController : MonoBehaviour
             
         }
 
-        dropOption = InvenManager.Instance.currItemName.itemName;
+        dropOption = invenManager.currItemName.itemName;
     }
 
     private void FixedUpdate()
