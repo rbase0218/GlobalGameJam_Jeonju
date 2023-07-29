@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7929130350738406417}
   - component: {fileID: 7603016761645636583}
+  - component: {fileID: 6333313839971039650}
   m_Layer: 0
   m_Name: Guide
   m_TagString: Untagged
@@ -138,6 +139,20 @@ MonoBehaviour:
   animationDuration: 2
   Delay: 0.1
   ease: 24
+--- !u!114 &6333313839971039650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7296463236347963051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0614beed73d1142a2b13a46eae8a0081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialValue: 5
+  decreaseAmount: 1
 --- !u!1 &7603016760949533033
 GameObject:
   m_ObjectHideFlags: 0

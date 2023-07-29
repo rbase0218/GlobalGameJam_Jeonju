@@ -19,6 +19,12 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private Vector3 movement;
 
+    
+    public float rotationSpeed = 60f;
+    private float targetRotationY = 0f;
+    private Quaternion targetRotation;
+
+    
     public string dropOption = "null";
     private void Start()
     {
@@ -27,25 +33,28 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+
+
         // WASD 키 입력을 받아 이동 방향 계산
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
 
-        float wheelInput = Input.GetAxis("Mouse ScrollWheel");
-        Vector3 cameraPos;
-        cameraPos = CameraObject.transform.position;
-        if (wheelInput > 0) {
-            CameraObject.transform.position = new Vector3(cameraPos.x, cameraPos.y, cameraPos.z-0.5f);
-        }
-        else if (wheelInput < 0)
+        transform.Translate(Vector3.right * Time.deltaTime * moveSpeed);
+        // 플레이어 회전 처리
+        if (Input.GetKey(KeyCode.D))
         {
-            CameraObject.transform.position = new Vector3(cameraPos.x, cameraPos.y, cameraPos.z + 0.5f);
+            // 'W' 키를 누르면 왼쪽으로 45도 회전
+            targetRotationY += rotationSpeed * Time.deltaTime;
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            // 'S' 키를 누르면 오른쪽으로 45도 회전
+            targetRotationY -= rotationSpeed * Time.deltaTime;
         }
 
+        // 부드럽게 회전하기 위해 Quaternion.Slerp() 사용
+        transform.rotation = Quaternion.Euler(0f, targetRotationY, 0f);
 
-
-        movement = new Vector3(horizontalInput, 0f, verticalInput).normalized;
-
+        
         // 마우스 왼쪽 버튼 클릭 시 프리팹 오브젝트 생성
         if (Input.GetMouseButtonDown(0))
         {
@@ -83,7 +92,7 @@ public class PlayerController : MonoBehaviour
 
     private void SpawnBullet()
     {
-        
+            
             // 플레이어의 현재 위치에서 프리팹 오브젝트 생성
             if (dropOption == "A")
             {
