@@ -7,12 +7,16 @@ public class PlayerController : MonoBehaviour
 {
 
     public float moveSpeed = 5f; // 플레이어 이동 속도
-    public GameObject bulletPrefab; // 생성할 프리팹 오브젝트
+    public GameObject bulletPrefabA; // 생성할 프리팹 오브젝트
+    public GameObject bulletPrefabB; // 생성할 프리팹 오브젝트
+    public GameObject bulletPrefabC; // 생성할 프리팹 오브젝트
+    public GameObject bulletPrefabD; // 생성할 프리팹 오브젝트
 
-    public GameObject CameraObject;
+    public GameObject CameraObject = GameObject.FindGameObjectWithTag("Camera");
     private Rigidbody rb;
     private Vector3 movement;
 
+    public string dropOption = "null";
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -62,7 +66,24 @@ public class PlayerController : MonoBehaviour
     private void SpawnBullet()
     {
         // 플레이어의 현재 위치에서 프리팹 오브젝트 생성
-        Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        if(dropOption == "A") {
+            Instantiate(bulletPrefabA, transform.position, Quaternion.identity);
+        }
+        else if(dropOption == "B") {
+            Instantiate(bulletPrefabB, transform.position, Quaternion.identity);
+        }
+        else if (dropOption == "C")
+        {
+            Instantiate(bulletPrefabC, transform.position, Quaternion.identity);
+        }
+        else if (dropOption == "D")
+        {
+            Instantiate(bulletPrefabD, transform.position, Quaternion.identity);
+        }
+        else {
+            Debug.Log("No options were selected");
+        }
+
     }
 }    
 
