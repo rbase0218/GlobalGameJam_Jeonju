@@ -24,8 +24,8 @@ public class MonsterSpawner : MonoBehaviour
     {
         if (SpawnData is null)
         {
-            DebugWrap.Log($"{SpawnData} {DebugWrap.GetErrorMsg()}");
-            DebugWrap.Break();
+            Debug.Log($"{SpawnData} {Debug.GetErrorMsg()}");
+            Debug.Break();
         }
         else
         {
@@ -125,7 +125,7 @@ public class MonsterSpawner : MonoBehaviour
 
             for (int i = 0; i < copyData.monsterCreateMaxCount; ++i)
             {
-                DebugWrap.Log($"몬스터 스폰 {i}");
+                Debug.Log($"몬스터 스폰 {i}");
 
                 var obj = ObjectPoolManager.Instance.Get("MONSTER");
                 obj.transform.position = GetSpawnPos(copyData.spawnRadius);
