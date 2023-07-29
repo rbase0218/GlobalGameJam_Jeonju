@@ -14,6 +14,8 @@ public class InvenSlot : MonoBehaviour
     public SlotData slotName;
     private Image currImage;
 
+    public Sprite[] spr;
+
     private void Awake()
     {
         currImage = GetComponent<Image>();
@@ -22,12 +24,12 @@ public class InvenSlot : MonoBehaviour
     public SlotData GetSlot()
     {
         // 이미지 레이아웃 처리
-        currImage.color = Color.red;
+        currImage.sprite = spr[1];
         return slotName;
     }
 
     public void ClearImage()
     {
-        currImage.color = Color.black;
+        currImage.sprite = spr[0];
     }
 }
