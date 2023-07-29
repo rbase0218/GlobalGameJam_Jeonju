@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 7929130350738406417}
   - component: {fileID: 7603016761645636583}
   m_Layer: 0
-  m_Name: TreeSpawn
+  m_Name: Guide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
