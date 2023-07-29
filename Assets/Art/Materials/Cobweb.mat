@@ -105,6 +105,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
+    - _Dissolve: 1
     - _DstBlend: 10
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
@@ -112,6 +113,7 @@ Material:
     - _GlossyReflections: 0
     - _Glow: 4.83
     - _Metallic: 0
+    - _NoiseScale: 20.44
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0

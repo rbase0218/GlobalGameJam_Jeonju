@@ -17,7 +17,7 @@ public class ScaleBounce : MonoBehaviour
     {
         foreach (GameObject obj in objects)
         {
-            //scaleSaver.Add(obj.transform.localScale);
+            scaleSaver.Add(obj.transform.localScale);
 
             obj.transform.localScale = Vector3.zero;
         }
@@ -30,7 +30,7 @@ public class ScaleBounce : MonoBehaviour
     {
         foreach (GameObject obj in objects)
         {
-            //scaleSaver.Add(obj.transform.localScale);
+            scaleSaver.Add(obj.transform.localScale);
 
             obj.transform.localScale = Vector3.zero;
         }
@@ -42,7 +42,7 @@ public class ScaleBounce : MonoBehaviour
     {
         for (int i = 0; i < objects.Length; i++)
         {
-            objects[i].transform.DOScale(1, animationDuration).SetEase(ease);
+            objects[i].transform.DOScale(scaleSaver[i], animationDuration).SetEase(ease);
             yield return new WaitForSeconds(Delay);
         }
     }
