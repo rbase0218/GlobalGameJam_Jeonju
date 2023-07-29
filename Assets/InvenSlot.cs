@@ -7,27 +7,35 @@ using UnityEngine.UI;
 public struct SlotData
 {
     public string itemName;
+    
 }
 
 public class InvenSlot : MonoBehaviour
 {
     public SlotData slotName;
-    private Image currImage;
+    public Image defaultImg;
 
+    public Sprite DisableImg;
+    public Sprite ActiveImage;
+    
     private void Awake()
     {
-        currImage = GetComponent<Image>();
+        defaultImg = GetComponent<Image>();
+
+        //InvenManager.Instance.currItemName.itemName;
+
     }
 
     public SlotData GetSlot()
     {
-        // �̹��� ���̾ƿ� ó��
-        currImage.color = Color.red;
+        // ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾Æ¿ï¿½ Ã³ï¿½ï¿½
+        defaultImg.sprite = ActiveImage;
+        
         return slotName;
     }
 
     public void ClearImage()
     {
-        currImage.color = Color.black;
+        defaultImg.sprite = DisableImg;
     }
 }
