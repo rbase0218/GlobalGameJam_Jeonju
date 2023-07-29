@@ -17,6 +17,8 @@ public class GameManager : Singleton<GameManager>
 
 
         pauseCanvas.SetActive(false);
+
+        
     }
 
     // Update is called once per frame
@@ -79,7 +81,9 @@ public class GameManager : Singleton<GameManager>
 
    public void ExitGame()
     {
-        SceneManager.LoadScene("MenuScene");
+        Time.timeScale = 1.0f;
+        SceneManager.LoadSceneAsync("MenuScene", LoadSceneMode.Single);
+
     }
 
 }
