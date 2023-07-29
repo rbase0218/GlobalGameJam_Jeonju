@@ -35,7 +35,12 @@ public class SpiritController : MonoBehaviour
 
     public Vector3 middlePos;
 
-    //public List<GameObject> test;
+    // 3. Stop
+    private bool isStop = false;
+
+    // 5. Around
+    public Transform startPos;
+    public Transform endPos;
 
     // But used to Animation Curves
     // 3. Selector
@@ -53,6 +58,8 @@ public class SpiritController : MonoBehaviour
         }
 
         // IdleMovement();
+
+        StartCoroutine(StartAroundMove(startPos.position, endPos.position));
     }
 
     private void OnEnable()
@@ -63,7 +70,7 @@ public class SpiritController : MonoBehaviour
 
     private void Update()
     {
-        if (timer >= MAX && !isMove && !isStartCoroutine)
+        if (timer >= MAX && !isMove && !isStartCoroutine && !isStop)
         {
             timer = .0f;
             MAX = SetMaxTimer(MaxTimer, UpdateTimer());
@@ -74,27 +81,39 @@ public class SpiritController : MonoBehaviour
             //selector = 1;
         }
 
+        if(isStop)
+        {
+            StopCoroutine("Move");
+            StopCoroutine("CurveMove");
+
+            isStartCoroutine = isMove = false;
+        }
+
         //if (Input.GetKeyDown(KeyCode.A))
         //    IdleMovement();
         //if (Input.GetKeyDown(KeyCode.D))
         //    Movement();
 
-        timer += Time.deltaTime;
+        if(!isStop)
+            timer += Time.deltaTime;
     }
 
     private void FixedUpdate()
     {
-        switch (selector)
+        if (!isStop)
         {
-            case 0:
-                if (!isStartCoroutine)
-                    IdleMovement();
-                break;
+            switch (selector)
+            {
+                case 0:
+                    if (!isStartCoroutine)
+                        IdleMovement();
+                    break;
 
-            case 1:
-                if (!isMove)
-                    Movement();
-                break;
+                case 1:
+                    if (!isMove)
+                        Movement();
+                    break;
+            }
         }
     }
 
@@ -119,6 +138,18 @@ public class SpiritController : MonoBehaviour
         isMove = true;
 
         targetPos = new Vector3(UnityEngine.Random.Range(-radiusOffset, radiusOffset + 1), 0, UnityEngine.Random.Range(-radiusOffset, radiusOffset + 1));
+        targetPos.y = SpiritBody.transform.position.y;
+
+        StartCoroutine("Move");
+    }
+
+    private void Movement(Vector3 target)
+    {
+        Debug.Log("MOVE! - Target Ver");
+
+        isMove = true;
+
+        targetPos = target;
         targetPos.y = SpiritBody.transform.position.y;
 
         StartCoroutine("Move");
@@ -246,5 +277,77 @@ public class SpiritController : MonoBehaviour
     private float UpdateTimer()
     {
         return UnityEngine.Random.Range(-OffsetTimer, (OffsetTimer + 1f));
+    }
+
+
+    // 3. Stop
+    public void SetStop()
+    {
+        isStop = true;
+    }
+
+    public void SetMove()
+    {
+        isStop = false;
+    }
+
+    // 4. Target Move
+
+    public void SetTargetMove(Vector3 target)
+    {
+        Movement(target);
+    }
+
+    // 5. Trap
+    public GameObject testObj;
+
+    // 원의 Center, 원의 반지름
+    public void SetAround(Vector3 startPos, Vector3 endPos)
+    {
+        //StartCoroutine(StartAroundMove(startPos, endPos));
+    }
+
+    public float objSpeed = 10f;
+    public int rotateNum = 0;
+    private IEnumerator StartAroundMove(Vector3 startPos, Vector3 endPos)
+    {
+        SetStop();
+
+        float deg = .0f;
+        float radius = Vector3.Distance(endPos, startPos) / 2;
+
+
+        while (true)
+        {
+            deg += Time.deltaTime * objSpeed;
+
+            if (deg < 360)
+            {
+                var rad = Mathf.Deg2Rad * (deg);
+                var x = radius * Mathf.Sin(rad);
+                var y = radius * Mathf.Cos(rad);
+
+                var dummyPos = ((endPos + startPos) / 2) + new Vector3(x, 0, y);
+                dummyPos.y = SpiritBody.position.y;
+
+                SpiritBody.position = dummyPos;
+                SpiritBody.rotation = Quaternion.Euler(0, 0, deg * -1); //가운데를 바라보게 각도 조절
+            }
+            else
+            {
+                rotateNum++;
+                deg = 0;
+
+                if(rotateNum >= 5)
+                {
+                    SetMove();
+                    break;
+                }
+
+            }
+
+            yield return null;
+        }
+
     }
 }
