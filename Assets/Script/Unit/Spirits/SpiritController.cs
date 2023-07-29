@@ -35,7 +35,7 @@ public class SpiritController : MonoBehaviour
 
     public Vector3 middlePos;
 
-    public List<GameObject> test;
+    //public List<GameObject> test;
 
     // But used to Animation Curves
     // 3. Selector
@@ -52,7 +52,13 @@ public class SpiritController : MonoBehaviour
             spotPoint[i].localPosition = t;
         }
 
-        IdleMovement();
+        // IdleMovement();
+    }
+
+    private void OnEnable()
+    {
+        if(gameObject.activeSelf)
+            IdleMovement();
     }
 
     private void Update()
@@ -99,6 +105,8 @@ public class SpiritController : MonoBehaviour
 
     private void IdleMovement()
     {
+        Debug.Log("IDLE!");
+
         isStartCoroutine = true;
 
         StartCoroutine("CurveMove");
@@ -106,6 +114,8 @@ public class SpiritController : MonoBehaviour
 
     private void Movement()
     {
+        Debug.Log("MOVE!");
+
         isMove = true;
 
         targetPos = new Vector3(UnityEngine.Random.Range(-radiusOffset, radiusOffset + 1), 0, UnityEngine.Random.Range(-radiusOffset, radiusOffset + 1));
@@ -126,9 +136,9 @@ public class SpiritController : MonoBehaviour
 
         middlePos = new Vector3(targetPos.x, middlePos.y, 0f);
 
-        test[0].transform.position = localPos;
-        test[1].transform.position = middlePos;
-        test[2].transform.position = targetPos;
+        //test[0].transform.position = localPos;
+        //test[1].transform.position = middlePos;
+        //test[2].transform.position = targetPos;
 
         // 거리 / 속도 = 시간
         float speeed = .0f;

@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fe1326c0155a174e9a09fa1eedf3d70, type: 3}
-  m_Name: SpawnerData
+  m_Script: {fileID: 11500000, guid: b9bba06eeabc88a40b7ac3c4eec9a18f, type: 3}
+  m_Name: TreeStatus
   m_EditorClassIdentifier: 
-  monsterCreateTime: 15
-  monsterCreateMaxCount: 2
-  monsterPrefab: {fileID: 2057051516540506560, guid: 4a79b22b3a31a0e47bb02efce8a9544b,
-    type: 3}
-  monsterWaveCount: -1
-  spawnRadius: 3
+  status:
+  - type: 1
+    value: 5
+  - type: 2
+    value: 5

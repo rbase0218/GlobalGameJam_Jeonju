@@ -28,7 +28,7 @@ public class CollisionHandler : MonoBehaviour
     {
         // 현재 오브젝트의 위치와 회전값 저장
         Vector3 position = transform.position;
-        Quaternion rotation = transform.rotation;
+        Quaternion rotation = Quaternion.identity;
 
         // 기존 오브젝트 파괴
         Destroy(gameObject);
