@@ -28,7 +28,7 @@ public class InvenSlot : MonoBehaviour
 
     public SlotData GetSlot()
     {
-        // �̹��� ���̾ƿ� ó��
+        // ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾Æ¿ï¿½ Ã³ï¿½ï¿½
         defaultImg.sprite = ActiveImage;
         
         return slotName;
