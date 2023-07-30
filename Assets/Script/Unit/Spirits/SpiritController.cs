@@ -58,8 +58,6 @@ public class SpiritController : MonoBehaviour
         }
 
         // IdleMovement();
-
-        StartCoroutine(StartAroundMove(startPos.position, endPos.position));
     }
 
     private void OnEnable()
