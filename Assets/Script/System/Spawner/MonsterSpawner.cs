@@ -10,7 +10,7 @@ public class MonsterSpawner : MonoBehaviour
 
     public UnityEvent spawnEvent;
     public UnityEvent destroyEvent;
-    
+
     private MonsterSpawnerData copyData;
     private float timer = .0f;
     private int previousCount = 0;
@@ -22,17 +22,9 @@ public class MonsterSpawner : MonoBehaviour
 
     private void Awake()
     {
-        if (SpawnData is null)
-        {
-            DebugWrap.Log($"{SpawnData} {DebugWrap.GetErrorMsg()}");
-            DebugWrap.Break();
-        }
-        else
-        {
-            SetUp();
-            
-            ObjectPoolManager.Instance.CreateBuffer("MONSTER", 10, this.transform, SpawnData.monsterPrefab);
-        }
+        SetUp();
+
+        ObjectPoolManager.Instance.CreateBuffer("MONSTER", 10, this.transform, SpawnData.monsterPrefab);
 
         // Auto 생성 진행한다.
         SetAuto(true);
@@ -125,11 +117,9 @@ public class MonsterSpawner : MonoBehaviour
 
             for (int i = 0; i < copyData.monsterCreateMaxCount; ++i)
             {
-                DebugWrap.Log($"몬스터 스폰 {i}");
-
                 var obj = ObjectPoolManager.Instance.Get("MONSTER");
                 obj.transform.GetChild(0).position = GetSpawnPos(copyData.spawnRadius);
-                
+
                 obj.SetActive(true);
             }
 

@@ -14,20 +14,50 @@ public class GameManager : Singleton<GameManager>
     public InvenManager invenManager;
 
     // Start is called before the first frame update
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        
+    }
     void Start()
     {
         seeds = 10f;
         sprits = 20f;
+    }
 
-        pauseCanvas.SetActive(false);
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        SceneManager.sceneLoaded += OnScene;
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+
+        SceneManager.sceneLoaded -= OnScene;
+    }
+
+    public void OnScene(Scene name, LoadSceneMode scene)
+    {
+        if (SceneManager.GetActiveScene().name == "InGameScene")
+        {
+            pauseCanvas = GameObject.Find("PauseCanvas");
+            pauseCanvas.SetActive(false);
+
+            scoreManager = GameObject.Find("ScoreList").GetComponent<ScoreManager>();
+            invenManager = GameObject.Find("Inven").GetComponent<InvenManager>();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        scoreManager.SetSeedText(seeds.ToString());
-        scoreManager.SetSpiritText(sprits.ToString());
-
+        scoreManager?.SetSeedText(seeds.ToString());
+        scoreManager?.SetSpiritText(sprits.ToString());
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
