@@ -9,17 +9,24 @@ public class SceneController : Singleton<SceneController>
 
     public void OnChangeScene(string SceneName)
     {
-        StartCoroutine("ChangeScene", SceneName);
+        SceneManager.LoadScene(SceneName);
+
+        //   StartCoroutine("ChangeScene", SceneName);
     }
     private IEnumerator ChangeScene(string SceneName)
     {
-        FadeManager.Instance.FadeIn(1f, NextScene);
+        FadeManager.Instance.FadeIn(1f);
 
-        oper = SceneManager.LoadSceneAsync(SceneName, LoadSceneMode.Single);
         oper.allowSceneActivation = false;
 
         while (!oper.isDone)
         {
+
+            if (oper.progress >= 0.9f)
+            {
+                NextScene();
+            }
+
             yield return null;
         }
     }
