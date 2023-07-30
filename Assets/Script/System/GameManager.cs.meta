@@ -3,7 +3,10 @@ guid: 6e1c19f46816648a993f1678b4aed1d8
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - pauseCanvas: {instanceID: 0}
+  - scoreManager: {instanceID: 0}
+  - invenManager: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

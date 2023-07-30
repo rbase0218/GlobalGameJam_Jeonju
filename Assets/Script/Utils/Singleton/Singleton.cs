@@ -34,20 +34,24 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                         }
 
                         _instance = findObject.AddComponent<T>();
+
+
+                        DontDestroyOnLoad(_instance);
                     }
                 }
 
-                DontDestroyOnLoad(_instance);
+
+                    DontDestroyOnLoad(_instance);
 
                 return _instance;
             }
         }
     }
 
-    protected virtual void OnApplicationQuit()
-    {
-        _applicationQuit = true;
-    }
+    //protected virtual void OnApplicationQuit()
+    //{
+    //    _applicationQuit = true;
+    //}
 
     public virtual void OnDestroy()
     {
