@@ -18,8 +18,10 @@ public class FadeManager : Singleton<FadeManager>
     private float timer;
     private bool isFading;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         // FadeImage.rectTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
         FadeImage.raycastTarget = false;
     }

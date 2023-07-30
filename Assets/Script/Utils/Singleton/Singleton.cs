@@ -3,54 +3,51 @@ using UnityEngine;
 
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    private static T _instance = null;
-    private static object _lock = new object();
-    private static bool _applicationQuit = false;
+    protected static T instance;
+
+    public bool IsDontDestroy = true;
 
     public static T Instance
     {
         get
         {
-            if (_applicationQuit)
+            if (instance == null)
             {
+                Debug.LogWarning($"씬 내에 {typeof(T).ToString()} 이(가) 존재하지 않습니다. \n 싱글톤 초기화 전에 Instance를 접근하는지 확인 해주세요.");
                 return null;
             }
 
-            lock (_lock)
-            {
-                if (_instance == null)
-                {
-                    _instance = FindObjectOfType<T>();
-
-                    if (_instance == null)
-                    {
-                        string componentName = typeof(Singleton<T>).ToString();
-
-                        GameObject findObject = GameObject.Find(componentName);
-
-                        if (findObject == null)
-                        {
-                            findObject = new GameObject(componentName);
-                        }
-
-                        _instance = findObject.AddComponent<T>();
-                    }
-                }
-
-                DontDestroyOnLoad(_instance);
-
-                return _instance;
-            }
+            return instance;
         }
     }
 
-    protected virtual void OnApplicationQuit()
+    protected virtual void Awake()
     {
-        _applicationQuit = true;
+        Debug.Log(instance);
+
+        if (instance == null)
+        {
+            Debug.Log("2");
+
+            instance = this as T;
+
+            if (IsDontDestroy)
+            {
+                Debug.Log("들어가");
+                instance.transform.name += instance.transform.name + "_Singleton";
+                DontDestroyOnLoad(gameObject);
+            }
+        }
+        else
+        {
+            Debug.Log(instance.transform.name);
+
+            Destroy(gameObject);
+        }
     }
 
-    public virtual void OnDestroy()
+    protected virtual void OnDestroy()
     {
-        _applicationQuit = true;
+        instance = null;
     }
 }

@@ -19,10 +19,7 @@ public class GameManager : Singleton<GameManager>
         seeds = 10f;
         sprits = 20f;
 
-
         pauseCanvas.SetActive(false);
-
-        
     }
 
     // Update is called once per frame
@@ -36,7 +33,6 @@ public class GameManager : Singleton<GameManager>
         {
             TogglePause();
         }
-
     }
 
 
