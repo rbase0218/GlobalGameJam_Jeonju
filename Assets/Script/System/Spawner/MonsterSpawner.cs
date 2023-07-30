@@ -128,7 +128,7 @@ public class MonsterSpawner : MonoBehaviour
                 DebugWrap.Log($"몬스터 스폰 {i}");
 
                 var obj = ObjectPoolManager.Instance.Get("MONSTER");
-                obj.transform.position = GetSpawnPos(copyData.spawnRadius);
+                obj.transform.GetChild(0).position = GetSpawnPos(copyData.spawnRadius);
                 
                 obj.SetActive(true);
             }
