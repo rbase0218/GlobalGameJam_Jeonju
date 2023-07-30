@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fe1326c0155a174e9a09fa1eedf3d70, type: 3}
   m_Name: SpawnerData
   m_EditorClassIdentifier: 
-  monsterCreateTime: 5
-  monsterCreateMaxCount: 2
+  monsterCreateTime: 10
+  monsterCreateMaxCount: 3
   monsterPrefab: {fileID: 2057051516540506560, guid: 4a79b22b3a31a0e47bb02efce8a9544b,
     type: 3}
   monsterWaveCount: -1
-  spawnRadius: 30
+  spawnRadius: 15
