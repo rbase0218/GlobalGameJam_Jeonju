@@ -23,8 +23,11 @@ public class PlayerController : MonoBehaviour
     private float targetRotationY = 0f;
     private Quaternion targetRotation;
 
-    
-    public string dropOption = "null";
+    public InvenManager invenManager;
+
+
+    public string dropOption;
+   
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -73,7 +76,7 @@ public class PlayerController : MonoBehaviour
             
         }
 
-        dropOption = InvenManager.Instance.currItemName.itemName;
+        dropOption = invenManager.currItemName.itemName;
     }
 
     private void FixedUpdate()
@@ -95,7 +98,7 @@ public class PlayerController : MonoBehaviour
     {
             
             // 플레이어의 현재 위치에서 프리팹 오브젝트 생성
-            if (dropOption == "Grass" && GameManager.Instance.seeds > 1)
+            if (dropOption == "Grass" && GameManager.Instance.seeds >= 1)
             {
                 Instantiate(bulletPrefabA, transform.position, Quaternion.identity);
                 GameManager.Instance.setSeeds(1f);

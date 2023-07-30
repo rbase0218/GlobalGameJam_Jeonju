@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InvenManager : Singleton<InvenManager>
+public class InvenManager : MonoBehaviour
 {
     public InvenSlot[] invenSlot;
     public SlotData currItemName;

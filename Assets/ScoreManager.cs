@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ScoreManager : Singleton<ScoreManager>
+public class ScoreManager : MonoBehaviour
 {
     public TMP_Text seedsText;
-
     public TMP_Text spiritsText;
 
     private readonly string defaultText = " X ";
