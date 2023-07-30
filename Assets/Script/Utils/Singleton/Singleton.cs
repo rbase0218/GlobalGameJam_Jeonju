@@ -13,7 +13,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         {
             if (instance == null)
             {
-                Debug.LogWarning($"¾À ³»¿¡ {typeof(T).ToString()} ÀÌ(°¡) Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù. \n ½Ì±ÛÅæ ÃÊ±âÈ­ Àü¿¡ Instance¸¦ Á¢±ÙÇÏ´ÂÁö È®ÀÎ ÇØÁÖ¼¼¿ä.");
+                Debug.LogWarning($"ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ {typeof(T).ToString()} ï¿½ï¿½(ï¿½ï¿½) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½. \n ï¿½Ì±ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ ï¿½ï¿½ï¿½ï¿½ Instanceï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½.");
                 return null;
             }
 
@@ -33,7 +33,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
             if (IsDontDestroy)
             {
-                Debug.Log("µé¾î°¡");
+                Debug.Log("ï¿½ï¿½î°¡");
                 instance.transform.name += instance.transform.name + "_Singleton";
                 DontDestroyOnLoad(gameObject);
             }
